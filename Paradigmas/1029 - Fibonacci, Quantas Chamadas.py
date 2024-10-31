@@ -1,9 +1,9 @@
 def chamadas_recursivas(N: int) -> tuple:
     antC = 0
     atualC = 0
-    antF = 1
+    antF = 0
     atualF = 1
-    for _ in range(2, N):
+    for _ in range(1, N):
         auxC = antC
         antC = atualC
         atualC = antC + auxC + 2

@@ -1,29 +1,18 @@
-class Transacoes:
-    def __init__(self, numero) -> None:
-        self.numero = numero
-        self.visitado = False
-        self.sinal = '?'
-
-def menor_modulo(lista, x):
-    menor = min(lista[0].numero, -lista[0].numero)
-    modulo = abs(lista[0].numero - x)
-    for i in lista:
-        if modulo > abs(i.numero - x):
-            modulo = abs(i.numero - x)
-            menor = i.numero
-        elif modulo > abs(-i.numero - x):
-            modulo = abs(-i.numero - x)
-            menor = -i.numero
-
-    return menor
+import bisect
 
 while True:
-    N, F = list(map(int, input().split()))
+    N, F = map(int, input().split())
     if N == F == 0:
         break
 
-    T = []
-    for i in range(N):
-        T.append(Transacoes(int(input())))
-
-    print(menor_modulo(T, F))
+    transacoes = []
+    for _ in range(N):
+        bisect.insort(transacoes, int(input()))
+    
+    diferenca = None
+    for i in range(N - 1, -1, -1):
+        if diferenca == None:
+            diferenca = min(abs(transacoes[i] - F), abs(-transacoes[i] - F))
+        else:
+            diferenca = min(diferenca, abs(diferenca + transacoes[i] - F), abs(diferenca - transacoes[i] - F))
+        print(diferenca)

@@ -1,3 +1,5 @@
+cont = 0
+
 while True:
     N = int(input())
     if N == 0:
@@ -9,4 +11,11 @@ while True:
         texto = ''.join(i + ' ' for i in aux)
         texto = texto[:-1]
         textos.append(texto)
-        print(textos)
+
+    if cont != 0:
+        print()
+
+    maior = len(max(textos, key=lambda x: len(x)))
+    for i in textos:
+        print(' ' * (maior - len(i)) + i)
+    cont += 1
