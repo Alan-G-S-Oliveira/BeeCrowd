@@ -1,27 +1,24 @@
-from math import ceil
-
 while True:
     try:
 
         N, L, C = map(int, input().split())
         conto = input().split()
 
-        espaco_em_branco = N - 1
-
         pagina = 0
         palavra = 0
         linha = 0
-        for _ in range(N):
-            if palavra + len(conto[0]) < C:
-                palavra += len((conto.pop(0))) + 1
-            elif palavra == C:
-                palavra += len((conto.pop(0)))
+        for i in range(N):
+            atual = len(conto[i])
+            if atual + palavra > C:
+                palavra += (atual + 1)
+            elif atual + pagina == C:
+                palavra += atual
             else:
-                palavras = 0
-                if linha < pagina:
+                palavra = atual
+                if linha < L:
                     linha += 1
                 else:
-                    linha = 0
+                    linha = 1
                     pagina += 1
 
         print(pagina)    
