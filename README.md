@@ -1,2 +1,2 @@
-# BeeCrowd Python
+# BeeCrowd
  Exercícios de algoritmos feito na plataforma beecrowd.
