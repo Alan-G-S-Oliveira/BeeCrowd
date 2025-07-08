@@ -1,0 +1,2 @@
+SELECT name, SUBSTRING(payday::VARCHAR
+FROM 9 FOR 2)::INT AS day FROM loan;
